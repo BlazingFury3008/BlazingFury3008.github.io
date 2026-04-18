@@ -6,19 +6,22 @@
   <title>Aiden Taylor | Portfolio</title>
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-secondary: #121a31;
+      --bg: #0a0f1f;
+      --bg-alt: #10172d;
       --panel: rgba(255, 255, 255, 0.06);
       --panel-strong: rgba(255, 255, 255, 0.1);
       --border: rgba(255, 255, 255, 0.12);
       --text: #f5f7ff;
-      --text-soft: #b8c0e0;
+      --text-soft: #b7bfdc;
+      --muted: #8a93b8;
       --accent: #7c5cff;
-      --accent-2: #20c997;
+      --accent-2: #21c997;
       --accent-3: #ff7a59;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      --radius: 22px;
-      --max-width: 1200px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1180px;
     }
 
     * {
@@ -32,18 +35,23 @@
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(124, 92, 255, 0.22), transparent 30%),
-        radial-gradient(circle at top right, rgba(32, 201, 151, 0.16), transparent 28%),
-        radial-gradient(circle at bottom center, rgba(255, 122, 89, 0.12), transparent 30%),
-        linear-gradient(180deg, #0b1020 0%, #0f1730 45%, #0a0f1d 100%);
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124, 92, 255, 0.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(33, 201, 151, 0.14), transparent 24%),
+        radial-gradient(circle at bottom center, rgba(255, 122, 89, 0.12), transparent 28%),
+        linear-gradient(180deg, #0a0f1f 0%, #0e1630 45%, #0a0f1d 100%);
       min-height: 100vh;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
@@ -54,9 +62,9 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: rgba(11, 16, 32, 0.65);
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(10, 15, 31, 0.7);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -65,12 +73,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 16px 0;
+      padding: 18px 0;
     }
 
     .brand {
       display: flex;
       flex-direction: column;
+      gap: 4px;
     }
 
     .brand-title {
@@ -81,65 +90,64 @@
     }
 
     .brand-subtitle {
-      font-size: 0.85rem;
       color: var(--text-soft);
+      font-size: 0.9rem;
     }
 
     .nav {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
     }
 
     .nav a {
+      color: var(--text-soft);
       padding: 10px 14px;
       border-radius: 999px;
-      color: var(--text-soft);
-      transition: 0.25s ease;
+      transition: 0.2s ease;
       font-size: 0.95rem;
     }
 
     .nav a:hover {
-      background: rgba(255, 255, 255, 0.08);
       color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .hero {
-      padding: 72px 0 36px;
+      padding: 72px 0 28px;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
+      gap: 24px;
       align-items: stretch;
     }
 
-    .hero-card,
-    .info-card,
-    .section-card,
-    .project-card {
+    .card {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
       backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
     }
 
-    .hero-card {
+    .hero-main {
       padding: 40px;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-card::before {
+    .hero-main::after {
       content: "";
       position: absolute;
-      inset: auto -80px -80px auto;
+      right: -80px;
+      bottom: -80px;
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 70%);
+      background: radial-gradient(circle, rgba(124, 92, 255, 0.32), transparent 70%);
       pointer-events: none;
     }
 
@@ -147,31 +155,31 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      background: rgba(124, 92, 255, 0.14);
+      border: 1px solid rgba(124, 92, 255, 0.28);
+      color: #ddd5ff;
       border-radius: 999px;
-      background: rgba(124, 92, 255, 0.15);
-      border: 1px solid rgba(124, 92, 255, 0.25);
-      color: #d8d0ff;
+      padding: 8px 14px;
       font-size: 0.9rem;
       margin-bottom: 18px;
     }
 
-    .hero h1 {
+    .hero-title {
       margin: 0;
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
     }
 
-    .hero h1 span {
+    .hero-title span {
       display: block;
       color: var(--text-soft);
       font-weight: 600;
     }
 
-    .hero p {
+    .hero-description {
       margin: 22px 0 0;
-      max-width: 700px;
+      max-width: 720px;
       color: var(--text-soft);
       font-size: 1.05rem;
       line-height: 1.8;
@@ -181,7 +189,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
     .btn {
@@ -192,18 +200,17 @@
       padding: 14px 20px;
       border-radius: 14px;
       font-weight: 700;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       border: 1px solid transparent;
-      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #9b7dff);
       color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
     }
 
     .btn-secondary {
@@ -212,17 +219,18 @@
       color: var(--text);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.09);
-      transform: translateY(-2px);
-    }
-
-    .info-card {
+    .hero-side {
       padding: 28px;
       display: flex;
       flex-direction: column;
+      gap: 18px;
       justify-content: space-between;
-      gap: 22px;
+    }
+
+    .mini-heading {
+      margin: 0 0 14px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
     }
 
     .stat-grid {
@@ -238,8 +246,8 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .stat-number {
-      font-size: 1.7rem;
+    .stat-value {
+      font-size: 1.65rem;
       font-weight: 800;
       margin-bottom: 6px;
     }
@@ -247,42 +255,43 @@
     .stat-label {
       color: var(--text-soft);
       font-size: 0.92rem;
+      line-height: 1.5;
     }
 
-    .mini-note {
+    .side-text {
       color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 0.98rem;
+      line-height: 1.75;
+      margin: 0;
     }
 
     .section {
-      padding: 18px 0 8px;
+      padding: 18px 0;
     }
 
     .section-card {
       padding: 30px;
     }
 
-    .section-heading {
+    .section-top {
       display: flex;
-      align-items: end;
       justify-content: space-between;
+      align-items: end;
       gap: 16px;
-      margin-bottom: 24px;
       flex-wrap: wrap;
+      margin-bottom: 24px;
     }
 
-    .section-heading h2 {
+    .section-title {
       margin: 0;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
+      font-size: 1.85rem;
+      letter-spacing: -0.04em;
     }
 
-    .section-heading p {
+    .section-intro {
       margin: 8px 0 0;
       color: var(--text-soft);
-      max-width: 700px;
-      line-height: 1.7;
+      line-height: 1.75;
+      max-width: 760px;
     }
 
     .about-grid {
@@ -291,28 +300,73 @@
       gap: 20px;
     }
 
-    .about-panel {
+    .inner-panel {
       padding: 24px;
-      border-radius: 18px;
+      border-radius: var(--radius-lg);
       background: rgba(255, 255, 255, 0.045);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .about-panel h3 {
-      margin-top: 0;
-      margin-bottom: 14px;
-      font-size: 1.1rem;
+    .inner-panel h3 {
+      margin: 0 0 14px;
+      font-size: 1.08rem;
     }
 
-    .about-panel p,
-    .about-panel li {
+    .inner-panel p,
+    .inner-panel li {
+      margin: 0;
       color: var(--text-soft);
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
-    .about-panel ul {
+    .inner-panel ul {
       margin: 0;
       padding-left: 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .skills-groups {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .skill-group {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .skill-pill:hover {
+      color: var(--text);
+      border-color: rgba(124, 92, 255, 0.28);
+      background: rgba(124, 92, 255, 0.1);
     }
 
     .projects-grid {
@@ -335,15 +389,15 @@
 
     .project-link {
       display: block;
-      padding: 24px;
       height: 100%;
+      padding: 24px;
     }
 
     .project-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 16px;
     }
 
@@ -351,51 +405,66 @@
       display: inline-block;
       padding: 7px 12px;
       border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
       background: rgba(255, 255, 255, 0.08);
       color: var(--text-soft);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
     }
 
     .project-arrow {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: var(--text-soft);
-      transition: transform 0.2s ease, color 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .project-card:hover .project-arrow {
-      transform: translateX(4px);
       color: var(--text);
+      transform: translateX(4px);
     }
 
-    .project-card h3 {
+    .project-title {
       margin: 0 0 12px;
       font-size: 1.35rem;
       letter-spacing: -0.03em;
     }
 
-    .project-card p {
+    .project-description {
       margin: 0;
       color: var(--text-soft);
       line-height: 1.75;
       font-size: 0.97rem;
     }
 
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .meta-pill {
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
     .footer {
-      padding: 40px 0 60px;
-      color: var(--text-soft);
+      padding: 32px 0 56px;
     }
 
     .footer-inner {
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-soft);
     }
 
     .reveal {
@@ -412,12 +481,13 @@
     @media (max-width: 980px) {
       .hero-grid,
       .about-grid,
+      .skills-groups,
       .projects-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-card,
-      .info-card,
+      .hero-main,
+      .hero-side,
       .section-card {
         padding: 24px;
       }
@@ -429,29 +499,16 @@
       }
 
       .topbar-inner {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
       }
 
       .nav {
         width: 100%;
       }
 
-      .nav a {
-        padding-left: 0;
-        padding-right: 0;
-      }
-
       .hero {
-        padding-top: 42px;
-      }
-
-      .hero h1 {
-        line-height: 1.02;
-      }
-
-      .stat-grid {
-        grid-template-columns: 1fr;
+        padding-top: 44px;
       }
 
       .hero-actions {
@@ -461,6 +518,10 @@
       .btn {
         width: 100%;
       }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -468,14 +529,15 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <div class="brand-title">Aiden Taylor</div>
-        <div class="brand-subtitle">Developer · Web · Tools · Interactive Projects</div>
+        <div class="brand-title" id="brand-title"></div>
+        <div class="brand-subtitle" id="brand-subtitle"></div>
       </div>
 
       <nav class="nav">
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="https://github.com/BlazingFury3008" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a id="github-link" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
   </header>
@@ -483,168 +545,83 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div class="hero-card reveal">
-          <div class="eyebrow">Portfolio / Developer Showcase</div>
-          <h1>
-            Building
-            <span>tools, websites, and interactive experiences.</span>
-          </h1>
-          <p>
-            I create software projects that blend functionality, usability, and creative problem-solving.
-            My work ranges from Discord bots and APIs to modern web platforms and community-focused digital tools.
-          </p>
+        <div class="card hero-main reveal">
+          <div class="eyebrow" id="hero-eyebrow"></div>
+          <h1 class="hero-title" id="hero-title"></h1>
+          <p class="hero-description" id="hero-description"></p>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn btn-secondary" href="https://github.com/BlazingFury3008" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+            <a class="btn btn-secondary" id="hero-github-link" href="#" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
           </div>
         </div>
 
-        <aside class="info-card reveal">
+        <aside class="card hero-side reveal">
           <div>
-            <div class="section-heading" style="margin-bottom: 18px;">
-              <div>
-                <h2 style="font-size: 1.25rem;">Quick Snapshot</h2>
-                <p style="margin-top: 8px;">A focused look at the kind of work I enjoy building.</p>
-              </div>
-            </div>
-
-            <div class="stat-grid">
-              <div class="stat">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Featured projects</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">API</div>
-                <div class="stat-label">Backend development</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">UI</div>
-                <div class="stat-label">Frontend interfaces</div>
-              </div>
-              <div class="stat">
-                <div class="stat-number">Bot</div>
-                <div class="stat-label">Automation & integrations</div>
-              </div>
-            </div>
+            <h2 class="mini-heading">Quick Snapshot</h2>
+            <div class="stat-grid" id="stats-container"></div>
           </div>
 
-          <p class="mini-note">
-            This portfolio highlights selected repositories that reflect my interest in scalable backend systems,
-            interactive web experiences, and tools built for real communities and niche spaces.
-          </p>
+          <p class="side-text" id="hero-side-text"></p>
         </aside>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="container">
-        <div class="section-card reveal">
-          <div class="section-heading">
+        <div class="card section-card reveal">
+          <div class="section-top">
             <div>
-              <h2>About Me</h2>
-              <p>
-                I’m a developer who enjoys designing systems that feel practical, polished, and engaging.
-                I like working across frontend and backend development, especially on projects involving custom platforms,
-                automation, APIs, and community-driven tools.
-              </p>
+              <h2 class="section-title">About Me</h2>
+              <p class="section-intro" id="about-intro"></p>
             </div>
           </div>
 
           <div class="about-grid">
-            <div class="about-panel">
+            <div class="inner-panel">
               <h3>What I Enjoy Building</h3>
-              <p>
-                My projects often focus on turning ideas into usable products, whether that means creating a clean frontend,
-                building a structured API, or adding features that make a platform more interactive and useful.
-                I enjoy projects that combine technical depth with strong presentation.
-              </p>
+              <p id="about-main"></p>
             </div>
 
-            <div class="about-panel">
+            <div class="inner-panel">
               <h3>Focus Areas</h3>
-              <ul>
-                <li>Frontend and backend web development</li>
-                <li>APIs and data-driven applications</li>
-                <li>Community tools and platform design</li>
-                <li>Interactive features and automation</li>
-              </ul>
+              <ul id="about-focus-list"></ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="skills" class="section">
       <div class="container">
-        <div class="section-card reveal">
-          <div class="section-heading">
+        <div class="card section-card reveal">
+          <div class="section-top">
             <div>
-              <h2>Featured Projects</h2>
-              <p>
-                A selection of repositories showcasing different areas of development, from bots and automation
-                to APIs and full website platforms.
+              <h2 class="section-title">Skills & Experience</h2>
+              <p class="section-intro">
+                A grouped overview of technical, leadership, community, event, and creative strengths.
               </p>
             </div>
           </div>
 
-          <div class="projects-grid">
-            <article class="project-card reveal">
-              <a class="project-link" href="https://github.com/BlazingFury3008/renfieldbot_v2" target="_blank" rel="noopener noreferrer">
-                <div class="project-top">
-                  <span class="project-tag">Discord Bot</span>
-                  <span class="project-arrow">↗</span>
-                </div>
-                <h3>renfieldbot_v2</h3>
-                <p>
-                  A Discord bot built for a small community, featuring anonymous voting, custom event functionality,
-                  and ChatGPT integration to support conversations, interaction, and automated community tools.
-                </p>
-              </a>
-            </article>
+          <div class="skills-groups" id="skills-container"></div>
+        </div>
+      </div>
+    </section>
 
-            <article class="project-card reveal">
-              <a class="project-link" href="https://github.com/BlazingFury3008/gvlarp-website-v2-api" target="_blank" rel="noopener noreferrer">
-                <div class="project-top">
-                  <span class="project-tag">FastAPI Backend</span>
-                  <span class="project-arrow">↗</span>
-                </div>
-                <h3>gvlarp-website-v2-api</h3>
-                <p>
-                  The backend for the GVLarp website, built with FastAPI. It focuses on database-driven CRUD generation
-                  and API-key security, supporting secure and scalable application development.
-                </p>
-              </a>
-            </article>
-
-            <article class="project-card reveal">
-              <a class="project-link" href="https://github.com/BlazingFury3008/gvlarp-website-v2-frontend" target="_blank" rel="noopener noreferrer">
-                <div class="project-top">
-                  <span class="project-tag">Frontend</span>
-                  <span class="project-arrow">↗</span>
-                </div>
-                <h3>gvlarp-website-v2-frontend</h3>
-                <p>
-                  A frontend project for the second iteration of the GVLarp website, moving away from WordPress toward
-                  a more modern, custom-built platform with a stronger user experience.
-                </p>
-              </a>
-            </article>
-
-            <article class="project-card reveal">
-              <a class="project-link" href="https://github.com/BlazingFury3008/the-gateway" target="_blank" rel="noopener noreferrer">
-                <div class="project-top">
-                  <span class="project-tag">Platform Concept</span>
-                  <span class="project-arrow">↗</span>
-                </div>
-                <h3>the-gateway</h3>
-                <p>
-                  A custom platform concept built as a hub for TTRPG and gaming content, with ambitions around character tools,
-                  guides, community features, and broader interactive platform systems.
-                </p>
-              </a>
-            </article>
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="card section-card reveal">
+          <div class="section-top">
+            <div>
+              <h2 class="section-title">Featured Projects</h2>
+              <p class="section-intro">
+                These are manually chosen projects, not auto-pulled from GitHub, so you stay in control of what appears here.
+              </p>
+            </div>
           </div>
+
+          <div class="projects-grid" id="projects-container"></div>
         </div>
       </div>
     </section>
@@ -652,25 +629,263 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Aiden Taylor</div>
-      <div>Built as a single-file portfolio for GitHub Pages</div>
+      <div>© <span id="year"></span> <span id="footer-name"></span></div>
+      <div id="footer-note"></div>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const siteData = {
+      name: "Aiden Taylor",
+      subtitle: "Developer · Web · APIs · Leadership · Community",
+      heroEyebrow: "Portfolio / Selected Work",
+      heroTitleTop: "Building",
+      heroTitleBottom: "software, systems, and community-driven experiences.",
+      heroDescription:
+        "I work across web development, backend systems, community tooling, and creative project design. Alongside building software, I have experience leading teams, running events, moderating communities, and shaping projects from concept through to delivery.",
+      githubUrl: "https://github.com/BlazingFury3008",
+      heroSideText:
+        "This portfolio is curated by hand so I can choose which work best represents me. It highlights both my technical background and the broader skills I bring in leadership, events, community building, and creative design.",
+      stats: [
+        { value: "Web", label: "Primary development focus" },
+        { value: "FastAPI", label: "Backend framework experience" },
+        { value: "5-10", label: "Small team leadership experience" },
+        { value: "20-40", label: "Community event scale" }
+      ],
+      aboutIntro:
+        "I enjoy building practical and polished software, especially projects that combine technical depth with a clear user experience. My background spans frontend and backend development, but also includes team leadership, event running, moderation, and creative worldbuilding.",
+      aboutMain:
+        "A lot of my work sits at the intersection of software, design, and community. That might mean building APIs, creating custom web platforms, developing Discord bots, organising events, or designing content and systems for hobby-focused spaces. I like projects that feel structured, purposeful, and engaging to use.",
+      focusAreas: [
+        "Frontend and backend web development",
+        "APIs, authentication, and structured data systems",
+        "Community-focused tools and moderation workflows",
+        "Team leadership and collaborative project work",
+        "Event planning, facilitation, and delivery",
+        "Worldbuilding, content design, and creative systems"
+      ],
+      footerNote: "Built as a single-file portfolio for GitHub Pages"
+    };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.12
-    });
+    const skillGroups = [
+      {
+        title: "Technical Skills",
+        items: [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "React Native",
+          "Python",
+          "Flask",
+          "FastAPI",
+          "MySQL",
+          "OAuth2",
+          "TensorFlow"
+        ]
+      },
+      {
+        title: "Working Knowledge",
+        items: [
+          "C#",
+          "Java",
+          "C"
+        ]
+      },
+      {
+        title: "Leadership & Collaboration",
+        items: [
+          "Team Leadership",
+          "Project Ownership",
+          "Collaboration",
+          "Task Coordination",
+          "University Team Lead Experience",
+          "Small Team Management"
+        ]
+      },
+      {
+        title: "Community & Moderation",
+        items: [
+          "Community Building",
+          "Community Moderation",
+          "Discord Bot Development",
+          "Community Tools",
+          "Online Community Support"
+        ]
+      },
+      {
+        title: "Events & Facilitation",
+        items: [
+          "Event Planning",
+          "Event Facilitation",
+          "Online Event Management",
+          "In-Person Event Management",
+          "TTRPG Session Running",
+          "Large Community Event Support"
+        ]
+      },
+      {
+        title: "Creative & Design",
+        items: [
+          "Worldbuilding",
+          "Content Design",
+          "Frontend Ideation",
+          "UI Design",
+          "AI-Assisted Design"
+        ]
+      }
+    ];
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    const projects = [
+      {
+        name: "The Gateway2.0",
+        tag: "Social Media/TTRPG Platform Concept",
+        link: "https://github.com/BlazingFury3008/Gateway2.0",
+        description:
+          "This is a designed platform that is to present the concept of a website designed with Video Game and TTRPG Enthusiasts, having wikis, character creators and friend contacts",
+        meta: ["Platform", "Gaming", "TTRPG", "Community-focused", "NextJS", "ReactJS", "Python", "Flask"]
+      },
+      {
+        name: "DarkWorldBot",
+        tag: "Community-focused Discord bot",
+        link: "https://github.com/BlazingFury3008/DarkWorldBot",
+        description: "This is a Community-focused discord bot, implementing a custom parser for Google Sheets, converting them into an object as the community used specifically designed Google Sheets",
+        meta: ["Discord", "Community-focused", "TTRPG", "Gaming", "Python"]
+      
+      },
+            {
+        name: "Shortlegs n' Paws",
+        tag: "Local Business Website",
+        link: "https://github.com/BlazingFury3008/Shortlegs-n-Paws-Website",
+        description:
+          "This is a website created and maintained by me for a local cat-sitting business. Currently (18/04/26) the website is a simple frontend site that has all relevant information for perspective clients of the business",
+        meta: ["Custom", "AI-Assisted Design", "ReactJS"]
+      },
+    ];
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function renderSiteData() {
+      document.getElementById("brand-title").textContent = siteData.name;
+      document.getElementById("brand-subtitle").textContent = siteData.subtitle;
+      document.getElementById("hero-eyebrow").textContent = siteData.heroEyebrow;
+
+      document.getElementById("hero-title").innerHTML = `
+        ${escapeHtml(siteData.heroTitleTop)}
+        <span>${escapeHtml(siteData.heroTitleBottom)}</span>
+      `;
+
+      document.getElementById("hero-description").textContent = siteData.heroDescription;
+      document.getElementById("hero-side-text").textContent = siteData.heroSideText;
+      document.getElementById("about-intro").textContent = siteData.aboutIntro;
+      document.getElementById("about-main").textContent = siteData.aboutMain;
+      document.getElementById("footer-name").textContent = siteData.name;
+      document.getElementById("footer-note").textContent = siteData.footerNote;
+
+      const githubLink = document.getElementById("github-link");
+      const heroGithubLink = document.getElementById("hero-github-link");
+
+      githubLink.href = siteData.githubUrl;
+      heroGithubLink.href = siteData.githubUrl;
+
+      const statsContainer = document.getElementById("stats-container");
+      statsContainer.innerHTML = siteData.stats
+        .map(
+          (stat) => `
+            <div class="stat">
+              <div class="stat-value">${escapeHtml(stat.value)}</div>
+              <div class="stat-label">${escapeHtml(stat.label)}</div>
+            </div>
+          `
+        )
+        .join("");
+
+      const focusList = document.getElementById("about-focus-list");
+      focusList.innerHTML = siteData.focusAreas
+        .map((item) => `<li>${escapeHtml(item)}</li>`)
+        .join("");
+    }
+
+    function renderSkillGroups() {
+      const container = document.getElementById("skills-container");
+
+      container.innerHTML = skillGroups
+        .map((group) => {
+          const items = group.items
+            .map((item) => `<span class="skill-pill">${escapeHtml(item)}</span>`)
+            .join("");
+
+          return `
+            <div class="skill-group">
+              <h3>${escapeHtml(group.title)}</h3>
+              <div class="skills-wrap">
+                ${items}
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    function renderProjects() {
+      const container = document.getElementById("projects-container");
+
+      container.innerHTML = projects
+        .map((project) => {
+          const metaHtml = (project.meta || [])
+            .map((item) => `<span class="meta-pill">${escapeHtml(item)}</span>`)
+            .join("");
+
+          return `
+            <article class="card project-card reveal">
+              <a class="project-link" href="${escapeHtml(project.link)}" target="_blank" rel="noopener noreferrer">
+                <div class="project-top">
+                  <span class="project-tag">${escapeHtml(project.tag)}</span>
+                  <span class="project-arrow">↗</span>
+                </div>
+                <h3 class="project-title">${escapeHtml(project.name)}</h3>
+                <p class="project-description">${escapeHtml(project.description)}</p>
+                <div class="project-meta">${metaHtml}</div>
+              </a>
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    function setupRevealAnimation() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    }
+
+    function init() {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      renderSiteData();
+      renderSkillGroups();
+      renderProjects();
+      setupRevealAnimation();
+    }
+
+    init();
   </script>
 </body>
 </html>
